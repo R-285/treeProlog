@@ -3,13 +3,13 @@
 
 int main(int argc, char* argv[]) {
     set<string> factsSet;
-    if(argc < 2)
+    /*if(argc < 2)
     {
         cout << "Using program is:\n"
                 "\ttreeProlog.exe pathToTheFile/file.txt" << endl;
         return 1;
-    }
-    auto lines = readFromFile(argv[1]);
+    }*/
+    auto lines = readFromFile("G:/MyFile.txt");
     vector<TreeBranch> rulesVector = parseFromLine(factsSet, lines);
     bool changed;
     do {

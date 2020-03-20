@@ -102,7 +102,9 @@ vector<TreeBranch> parseFromLine(set<string>& factsSet, vector<string>& file) {
     set<string> rulesSet = parseLine(file[1]);
     for (const string& currentRule : rulesSet) {
         auto firstDerivation = currentRule.find(DERIVATION);
-        if ((firstDerivation != -1) && (currentRule.substr(firstDerivation + 2).find(DERIVATION)) == -1);
+        auto ff = 0;
+        ff = currentRule.substr(firstDerivation + 2, currentRule.length()).find(DERIVATION);
+        if ((firstDerivation != -1) && ( ff == -1 ))
             rulesVector.push_back(madeTree(currentRule)); 
     }
     return rulesVector;
