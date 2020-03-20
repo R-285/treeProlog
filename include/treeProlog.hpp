@@ -81,7 +81,6 @@ void parseOperator(const string &rule, const std::string& op, TreeBranch& newNod
     newNode.descendants.push_back(madeTree(rule.substr(beginPart, rule.length())));
 }
 
-/**/
 vector<string> readFromFile(const string& fileName) {
     ifstream readedFile(fileName);
     string line;
@@ -102,8 +101,9 @@ vector<TreeBranch> parseFromLine(set<string>& factsSet, vector<string>& file) {
     factsSet = parseLine(file[0]);
     set<string> rulesSet = parseLine(file[1]);
     for (const string& currentRule : rulesSet) {
-        if (currentRule.find(DERIVATION) != -1)
-            rulesVector.push_back(madeTree(currentRule));
+        auto firstDerivation = currentRule.find(DERIVATION);
+        if ((firstDerivation != -1) && (currentRule.substr(firstDerivation + 2).find(DERIVATION)) == -1);
+            rulesVector.push_back(madeTree(currentRule)); 
     }
     return rulesVector;
 }
